@@ -2,11 +2,16 @@
 # File Integrity Monitor
 # By venoblin
 
-import sys
 import os
+import sys
+import subprocess
 
-def check():
-  print(sys.argv)
+def check(path):
+  files = os.listdir(path)
+  
+  for f in files:
+    hash = subprocess.run(["md5sum", f], capture_output=True).stdout.splitlines()
+    print(hash)
 
 if __name__ == '__main__':
-  check()
+  check(sys.argv[1])
