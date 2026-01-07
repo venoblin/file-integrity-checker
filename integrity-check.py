@@ -32,6 +32,9 @@ def check(path):
       connection.commit() 
 
 if __name__ == '__main__':
+  if len(sys.argv) < 2:
+    print("Error: Path required")
+  
   path_arg = sys.argv[1]
   
   check(path_arg)
