@@ -51,8 +51,8 @@ def check(path):
       case "n":
         return
       case "y" | "":
-        res = db.execute("UPDATE files SET hash=? where hash=?", (raw_hash, hash))
-        print(res.fetchone())
+        db.execute("UPDATE files SET hash=? WHERE hash=?", (raw_hash, hash,))
+        connection.commit()
 
 if __name__ == '__main__':
   path_arg = None
