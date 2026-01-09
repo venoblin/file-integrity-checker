@@ -18,7 +18,7 @@ def check(path):
     return
   
   files = os.listdir(path)
-
+  modified_files = []
   
   for f in files:
     output = subprocess.run(["md5sum", f], capture_output=True, text=True).stdout
@@ -35,14 +35,22 @@ def check(path):
         connection.commit() 
       else:
         file_name, hash, file_path = file_res.fetchone()
-        print(f"File modified: {hash} -> {raw_hash} | {f}")
-        baseline_input = input("Wish to create new baseline? (Y, n) ")
-        match baseline_input.lower():
-          case "n":
-            return
-          case "y" | " ":
-            print(f"File modified: {raw_hash} | {f}")
-
+        modified_files.append({
+          "raw_hash": raw_hash,
+          "hash": hash,
+          "file_name": f
+        })
+        
+  if len(modified_files) > 0:
+    for f in modified_files:
+      print(f"File modified: {f["hash"]} -> {f["raw_hash"]} | {f["file_name"]}")
+    
+    baseline_input = input("Wish to create new baseline? (Y, n) ")
+    match baseline_input.lower():
+      case "n":
+        return
+      case "y" | " ":
+        pass
 
 if __name__ == '__main__':
   path_arg = None
