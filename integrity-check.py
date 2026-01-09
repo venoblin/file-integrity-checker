@@ -28,14 +28,14 @@ def check(path):
 
     if hash_res.fetchone() is None:
       file_res = db.execute("SELECT * FROM files WHERE file_name=?", (f,))
-      print(file_res.fetchone())
 
       if file_res.fetchone() is None:
-        print(f"New file found: {raw_hash}  {f}")
+        print(f"New file found: {raw_hash} | {f}")
         db.execute("INSERT INTO files VALUES (?, ?, ?)", (f, raw_hash, path))
         connection.commit() 
       else:
-        print(f"File modified: {raw_hash}  {f}")
+        file_name, hash, file_path = file_res.fetchone()
+        print(f"File modified: {hash} -> {raw_hash} | {f}")
 
 if __name__ == '__main__':
   path_arg = None
