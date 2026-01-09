@@ -50,7 +50,7 @@ def check(path):
       case "n":
         return
       case "y" | " ":
-        pass
+        print("Do stuff here")
 
 if __name__ == '__main__':
   path_arg = None
