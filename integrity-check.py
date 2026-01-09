@@ -46,10 +46,10 @@ def check(path):
       print(f"File modified: {f["hash"]} -> {f["raw_hash"]} | {f["file_name"]}")
     
     baseline_input = input("Wish to create new baseline? (Y, n) ")
-    match baseline_input.lower():
+    match baseline_input.lower().replace(" ", ""):
       case "n":
         return
-      case "y" | " ":
+      case "y" | "":
         print("Do stuff here")
 
 if __name__ == '__main__':
