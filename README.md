@@ -5,7 +5,7 @@
 </a>
 <h3 align="center">File Integrity Checker</h3>
 <p align="center">
-Keep track of any file changes made to your files! 
+A lightweight security tool that monitors file systems for unauthorized changes by comparing MD5 file hashes against a local SQLite baseline.
 <br/>
 <br/>
 </div>
