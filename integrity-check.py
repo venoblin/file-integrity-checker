@@ -51,8 +51,10 @@ def check(path):
       case "n":
         return
       case "y" | "":
-        db.execute("UPDATE files SET hash=? WHERE hash=?", (raw_hash, hash,))
-        connection.commit()
+        for f in modified_files:
+          db.execute("UPDATE files SET hash=? WHERE hash=?", (f["raw_hash"], f["hash"],))
+          connection.commit()
+          print(f"Baseline set: {f["raw_hash"]} | {f["file_name"]}")
 
 if __name__ == '__main__':
   path_arg = None
@@ -63,6 +65,9 @@ if __name__ == '__main__':
   else:
     path_arg = sys.argv[1]
   
-  check(path_arg)
-
+  try:
+    check(path_arg)
+  except:
+    print("Exiting...")
+    
   connection.close()
