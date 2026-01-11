@@ -22,8 +22,8 @@ def check(path):
   
   for f in files:
     if not os.path.isdir(f"{path}/{f}"):
-      output = subprocess.run(["md5sum", f], capture_output=True, text=True).stdout
-      raw_hash = output[:32]
+      output = subprocess.run(["sha256sum", f], capture_output=True, text=True).stdout
+      raw_hash = output[:64]
 
       hash_res = db.execute("SELECT * FROM files WHERE hash=?", (raw_hash,))
 
