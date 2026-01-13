@@ -22,7 +22,7 @@ def check(path):
   
   for f in files:
     if not os.path.isdir(f"{path}/{f}"):
-      output = subprocess.run(["sha256sum", f], capture_output=True, text=True).stdout
+      output = subprocess.run(["sha256sum", f"{path}/{f}"], capture_output=True, text=True).stdout
       raw_hash = output[:64]
 
       hash_res = db.execute("SELECT * FROM files WHERE hash=?", (raw_hash,))
@@ -57,7 +57,11 @@ def check(path):
           print(f"Baseline set: {f["raw_hash"]} | {f["file_name"]}")
 
 if __name__ == '__main__':
-  path = os.path.abspath(f"{sys.argv[1]}")
+  if len(sys.argv) > 1:
+    path_arg = sys.argv[1]
+  else:
+    path_arg = "."
+  path = os.path.abspath(path_arg)
 
   check(path)
     
