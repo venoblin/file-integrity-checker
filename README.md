@@ -31,4 +31,6 @@ This project was built with the following technologies:
 
 ## Usage
 
-Put usage examples here
+```sh
+python3 integrity-check.py /path/to/check
+```
