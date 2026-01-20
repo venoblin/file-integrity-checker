@@ -9,7 +9,6 @@ import sqlite3
 
 connection = sqlite3.connect("fic.db")
 db = connection.cursor()
-
 db.execute("CREATE TABLE IF NOT EXISTS files(file_name, hash, file_path)")
 
 def check_path(path):
@@ -55,6 +54,10 @@ def check_path(path):
           db.execute("UPDATE files SET hash=? WHERE hash=?", (f["raw_hash"], f["hash"],))
           connection.commit()
           print(f"Baseline set: {f["raw_hash"]} | {f["file_name"]}")
+
+  def view_db():
+    all_items_res = db.execute("SELECT * FROM files").fetchall()
+    print(all_items_res)
 
 if __name__ == '__main__':
   if len(sys.argv) > 1:
