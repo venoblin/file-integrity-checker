@@ -12,7 +12,7 @@ db = connection.cursor()
 
 db.execute("CREATE TABLE IF NOT EXISTS files(file_name, hash, file_path)")
 
-def check(path):
+def check_path(path):
   if not os.path.isdir(path):
     print(f"Error: Directory '{path}' not found.")
     return
@@ -63,6 +63,6 @@ if __name__ == '__main__':
     path_arg = "."
   path = os.path.abspath(path_arg)
 
-  check(path)
+  check_path(path)
     
   connection.close()
