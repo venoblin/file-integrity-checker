@@ -62,9 +62,10 @@ def view_db():
     print(f"{hash} | {file_name}")
 
 if __name__ == '__main__':
-  view_db()
+  if sys.argv[1] == '--view-db':
+    view_db()
+  
   # if len(sys.argv) > 1:
-  #   path_arg = sys.argv[1]
   # else:
   #   path_arg = "."
   # path = os.path.abspath(path_arg)
