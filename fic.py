@@ -88,9 +88,9 @@ def run_check():
   match sys.argv[1]:
     case '--help':
       print_banner()
-    case '-d':
+    case '--view-db':
       view_db()
-    case '-s':
+    case '--scan':
       if len(sys.argv) >= 3:
         check_path(sys.argv[2])
       else:
