@@ -61,16 +61,19 @@ def view_db():
   for file_name, hash, file_path in all_items_res:
     print(f"{hash} | {file_name}")
 
-if __name__ == '__main__':
+def run_check():
   match sys.argv[1]:
     case '--view-db':
       view_db()
-  
+
   # if len(sys.argv) > 1:
   # else:
   #   path_arg = "."
   # path = os.path.abspath(path_arg)
 
   # check_path(path)
+
+if __name__ == '__main__':
+  run_check()
     
   connection.close()
