@@ -78,11 +78,16 @@ def print_banner():
       "Digital fingerprints don't lie."    
         
     [USAGE]
-      python fic.py [target_directory]   
+      python3 fic.py [option]   
+    
+    [OPTIONS]
+      --scan [target_directory]  |  Scans the specified directory
+      --view-db                  |  Views items in database
+    
   """)
 
 def run_check():
-  if len(sys.argv) < 1:
+  if len(sys.argv) < 2:
     return print('Error: Invalid command, use --help for command information.')
     
   match sys.argv[1]:
