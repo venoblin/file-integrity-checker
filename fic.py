@@ -81,8 +81,8 @@ def print_banner():
       python3 fic.py [option]   
     
     [OPTIONS]
-      --scan [target_directory]  |  Scans the specified directory
-      --view-db                  |  Views items in database
+      --scan [target_directory]  ::  Scans the specified directory
+      --view-db                  ::  Views items in database
     
   """)
 
