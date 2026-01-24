@@ -68,19 +68,21 @@ def print_banner():
     | |__      | |   | |     
     |  __|     | |   | |     
     | |       _| |_  | |____ 
-    |_|      |_____|  \_____|\
+    |_|      |_____|  \_____|
     
     :: File Integrity Checker (v1.0) ::   
+        
     [DESCRIPTION]
       A lightweight, zero-dependency File Integrity Checker.
       Watches your filesystem. Detects the silent creeps.
       "Digital fingerprints don't lie."    
+        
     [USAGE]
       python fic.py [target_directory]   
   """)
 
 def run_check():
-  if len(sys.argv) >= 2:
+  if len(sys.argv) < 1:
     return print('Error: Invalid command, use --help for command information.')
     
   match sys.argv[1]:
