@@ -63,12 +63,6 @@ def view_db():
 
 <<<<<<< HEAD
 def run_check():
-  match sys.argv[1]:
-    case '--view-db':
-      view_db()
-
-=======
-if __name__ == '__main__':
   if len(sys.argv) >= 2:
     match sys.argv[1]:
       case '-d':
@@ -78,7 +72,10 @@ if __name__ == '__main__':
           check_path(sys.argv[2])
         else:
           print("Error: Path needed.")
-  
+
+=======
+if __name__ == '__main__':
+  run_check()
 >>>>>>> 02ebac5f09dbb25edc989ca6e8cadccd3fc2c503
   # if len(sys.argv) > 1:
   # else:
