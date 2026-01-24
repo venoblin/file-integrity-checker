@@ -61,28 +61,38 @@ def view_db():
   for file_name, hash, file_path in all_items_res:
     print(f"{hash} | {file_name}")
 
-<<<<<<< HEAD
+def print_banner():
+  print(r"""
+     ______   _____    _____ 
+    |  ____| |_   _|  / ____|
+    | |__      | |   | |     
+    |  __|     | |   | |     
+    | |       _| |_  | |____ 
+    |_|      |_____|  \_____|\
+    
+    :: File Integrity Checker (v1.0) ::   
+    [DESCRIPTION]
+      A lightweight, zero-dependency File Integrity Checker.
+      Watches your filesystem. Detects the silent creeps.
+      "Digital fingerprints don't lie."    
+    [USAGE]
+      python fic.py [target_directory]   
+  """)
+
 def run_check():
   if len(sys.argv) >= 2:
-    match sys.argv[1]:
-      case '-d':
-        view_db()
-      case '-s':
-        if len(sys.argv) >= 3:
-          check_path(sys.argv[2])
-        else:
-          print("Error: Path needed.")
-
-=======
-if __name__ == '__main__':
-  run_check()
->>>>>>> 02ebac5f09dbb25edc989ca6e8cadccd3fc2c503
-  # if len(sys.argv) > 1:
-  # else:
-  #   path_arg = "."
-  # path = os.path.abspath(path_arg)
-
-  # check_path(path)
+    return print('Error: Invalid command, use --help for command information.')
+    
+  match sys.argv[1]:
+    case '--help':
+      print()
+    case '-d':
+      view_db()
+    case '-s':
+      if len(sys.argv) >= 3:
+        check_path(sys.argv[2])
+      else:
+        print("Error: Path needed.")
 
 if __name__ == '__main__':
   run_check()
