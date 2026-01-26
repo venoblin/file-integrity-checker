@@ -32,5 +32,5 @@ This project was built with the following technologies:
 ## Usage
 
 ```sh
-python3 integrity-check.py /path/to/check
+python3 fic.py --scan /path/to/check
 ```
