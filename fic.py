@@ -102,6 +102,8 @@ def run_check():
         check_path(sys.argv[2])
       else:
         print("Error: Path needed.")
+    case '--scan-r':
+      pass
 
 if __name__ == '__main__':
   run_check()
