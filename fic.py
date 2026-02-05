@@ -24,7 +24,7 @@ def check_path(path):
       output = subprocess.run(["sha256sum", f"{path}/{f}"], capture_output=True, text=True).stdout
       raw_hash = output[:64]
     else:
-      pass
+      check_path(f"{path}/{f}")
 
       hash_res = db.execute("SELECT * FROM files WHERE hash=?", (raw_hash,))
 
